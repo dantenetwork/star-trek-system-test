@@ -1,0 +1,11 @@
+{
+    "networks": [
+        {
+            "chainType": "EVM",
+            "Count": 3
+        },
+        {
+            "chainType": "EVM"
+        }
+    ]
+}
