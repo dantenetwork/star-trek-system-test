@@ -12,5 +12,8 @@
   "dependencies": {
     "config": "^3.3.9",
     "ganache": "^7.8.0"
+  },
+  "devDependencies": {
+    "truffle": "^5.8.4"
   }
 }
