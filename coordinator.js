@@ -181,5 +181,8 @@ module.exports = {
         updateRouterConfig(networks);
 
         updateRouterSecret();
+
+        let cmd = 'cd ' + config.get('routerPath') + ' && npm install'
+        execSync(cmd);
     }
 }
