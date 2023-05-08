@@ -1,4 +1,5 @@
 const { execSync } = require("child_process");
+const config = require('config');
 
 class EVMChainDeployer {
     constructor() {
@@ -6,18 +7,10 @@ class EVMChainDeployer {
     }
 
     async deployCrossChain(chainInfo) {
-        console.log('deployCrossChain1')
-        execSync("cd contracts/dante-cross-chain/avalanche && echo " + chainInfo.sk + " > .secret", (error, stdout, stderr) => {
-            if (error) {
-              console.error(`exec error: ${error}`);
-              return;
-            }
-            console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-          });
+        console.log('deployCrossChain', chainInfo);
+        execSync("cd " + config.get('crossChainContractPath') + " && echo -n " + chainInfo.sk + " > .secret");
 
-          console.log('deployCrossChain2');
-        let cmd = "cd contracts/dante-cross-chain/avalanche && npm install && npx truffle migrate --network CHAIN" + chainInfo.id;
+        let cmd = "cd " + config.get('crossChainContractPath') + " && npm install && npx truffle migrate --network CHAIN" + chainInfo.id;
         execSync(cmd, (error, stdout, stderr) => {
             if (error) {
               console.error(`exec error: ${error}`);
@@ -26,22 +19,13 @@ class EVMChainDeployer {
             console.log(`stdout: ${stdout}`);
             console.error(`stderr: ${stderr}`);
           });
-          console.log('deployCrossChain3')
     }
 
     async deployMainStarport(chainInfo) {
-        console.log('deployMainStarport')
-        execSync("cd contracts/star-trek/contracts && echo " + chainInfo.sk + " > .secret", (error, stdout, stderr) => {
-            if (error) {
-              console.error(`exec error: ${error}`);
-              return;
-            }
-            console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-          });
+        console.log('deployMainStarport', chainInfo);
+        execSync("cd " + config.get('starportContractPath') + " && echo -n " + chainInfo.sk + " > .secret");
 
-          console.log('deployMainStarport 2');
-        let cmd = "cd contracts/star-trek/contracts && npm install && npx truffle migrate --from 2 --network CHAIN" + chainInfo.id;
+        let cmd = "cd " + config.get('starportContractPath') + " && npm install && npx truffle migrate --f 2 --to 2 --network CHAIN" + chainInfo.id;
         execSync(cmd, (error, stdout, stderr) => {
             if (error) {
               console.error(`exec error: ${error}`);
@@ -50,22 +34,14 @@ class EVMChainDeployer {
             console.log(`stdout: ${stdout}`);
             console.error(`stderr: ${stderr}`);
           });
-          console.log('deployMainStarport 3')
     }
 
     async deployStarport(chainInfo) {
-        console.log('deployMainStarport')
-        execSync("cd contracts/star-trek/contracts && echo " + chainInfo.sk + " > .secret", (error, stdout, stderr) => {
-            if (error) {
-              console.error(`exec error: ${error}`);
-              return;
-            }
-            console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-          });
+        console.log('deployStarport', chainInfo);
+        // to be continued, there can be different accounts in .secret
+        execSync("cd " + config.get('starportContractPath') + " && echo -n " + chainInfo.sk + " > .secret");
 
-          console.log('deployMainStarport 2');
-        let cmd = "cd contracts/star-trek/contracts && npm install && npx truffle migrate --from 3 --network CHAIN" + chainInfo.id;
+        let cmd = "cd " + config.get('starportContractPath') + " && npm install && npx truffle migrate --f 3 --to 3 --network CHAIN" + chainInfo.id;
         execSync(cmd, (error, stdout, stderr) => {
             if (error) {
               console.error(`exec error: ${error}`);
@@ -73,8 +49,7 @@ class EVMChainDeployer {
             }
             console.log(`stdout: ${stdout}`);
             console.error(`stderr: ${stderr}`);
-          });
-          console.log('deployMainStarport 3')      
+          });   
     }
 }
 

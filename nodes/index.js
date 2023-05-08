@@ -22,10 +22,9 @@ class NodesMgr {
      * @return Port of the chain
      */
     launchChain(chainInfo) {
+        console.log('launchChain', chainInfo);
         let port;
-        console.log('chainInfo1', chainInfo)
         if (chainInfo.chainType == 'EVM') {
-            console.log('chainInfo', chainInfo)
             port = EVMChain.launch(chainInfo.id);
         }
         return port;

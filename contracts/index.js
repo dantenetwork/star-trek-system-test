@@ -7,10 +7,9 @@ class ContractsMgr {
     }
 
     async deploy(networks) {
-        console.log('networks', networks);
         for (let i = 0; i < networks.length; i++) {
             if (networks[i].chainType == 'EVM') {
-                // await EVMChain.deployCrossChain(networks[i]);
+                await EVMChain.deployCrossChain(networks[i]);
                 if (networks[i].mainStarport) {
                     await EVMChain.deployMainStarport(networks[i]);
                 }
