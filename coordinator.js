@@ -185,7 +185,7 @@ module.exports = {
     onLaunchRouter: function(networks) {
         updateRouterConfig(networks);
 
-        updateRouterSecret();
+        updateRouterSecret(networks);
 
         let cmd = 'cd ' + config.get('routerPath') + ' && npm install'
         execSync(cmd);
