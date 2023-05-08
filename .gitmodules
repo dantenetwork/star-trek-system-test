@@ -1,14 +1,3 @@
-[submodule "contracts/dante-cross-chain"]
-	path = contracts/dante-cross-chain
-	url = git@github.com:dantenetwork/dante-cross-chain.git
-	branch = feature-no-migration
-[submodule "contracts/-b"]
-	path = contracts/-b
-	url = git@github.com:dantenetwork/star-trek.git
-[submodule "contracts/star-trek"]
-	path = contracts/star-trek
-	url = git@github.com:dantenetwork/star-trek.git
-	branch = feature-frame
 [submodule "router"]
 	path = router
 	url = git@github.com:dantenetwork/router.git
@@ -16,3 +5,11 @@
 [submodule "star-trek-tools"]
 	path = star-trek-tools
 	url = git@github.com:dantenetwork/star-trek-tools.git
+[submodule "contracts/star-trek"]
+	path = contracts/star-trek
+	url = git@github.com:dantenetwork/star-trek.git
+	branch = feature-frame
+[submodule "contracts/dante-cross-chain"]
+	path = contracts/dante-cross-chain
+	url = git@github.com:dantenetwork/dante-cross-chain.git
+	branch = feature-no-migration
