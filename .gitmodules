@@ -9,3 +9,10 @@
 	path = contracts/star-trek
 	url = git@github.com:dantenetwork/star-trek.git
 	branch = feature-frame
+[submodule "router"]
+	path = router
+	url = git@github.com:dantenetwork/router.git
+	branch = alpha-v0.2.1
+[submodule "star-trek-tools"]
+	path = star-trek-tools
+	url = git@github.com:dantenetwork/star-trek-tools.git
