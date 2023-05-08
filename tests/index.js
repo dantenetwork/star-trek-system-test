@@ -40,8 +40,7 @@ function initialize(networks) {
     }
     console.log('starportsInfo', starportsInfo);
     let cmd = 'cd ' + config.get('starportToolPath') + ' && node index.js -ss CHAIN' + networks[0].id + ',' + starportsInfo;
-    let ret = execSync(cmd);
-    console.log('ret', ret.toString())
+    execSync(cmd);
 }
 
 module.exports = {
@@ -88,8 +87,7 @@ module.exports = {
         // Back to main
         console.log('Back');
         cmd = 'cd ' + config.get('starportToolPath') + ' && node index.js -t CHAIN' + networks[networks.length - 1].id + ',0,0xe092b1fa25DF5786D151246E492Eed3d15EA4dAA,CHAIN' + networks[0].id;
-        let ret1 = execSync(cmd);
-        console.log('ret1', ret1.toString());
+        execSync(cmd);
         await utils.sleep(10);
 
         // Synthesize diamonds
