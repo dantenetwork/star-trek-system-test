@@ -7,15 +7,18 @@ const nodes = require('../nodes/index');
 
 function initialize(networks) {
     console.log('initialize');
+    let cmd;
     // Cross chain contracts
     for (let i = 0; i < networks.length; i++) {
-        let cmd = 'cd ' + config.get('crossChainContractPath') + ' && node register/index.js -i CHAIN' + networks[i].id;
+        cmd = 'cd ' + config.get('crossChainContractPath') + ' && node register/index.js -i CHAIN' + networks[i].id;
         execSync(cmd);
     }
 
     // Starport contracts
+    cmd = 'cd ' + config.get('starportToolPath') + ' && npm install';
+    execSync(cmd);
     for (let i = 0; i < networks.length; i++) {
-        let cmd = 'cd ' + config.get('starportToolPath') + ' && node index.js -i CHAIN' + networks[i].id;
+        cmd = 'cd ' + config.get('starportToolPath') + ' && node index.js -i CHAIN' + networks[i].id;
         execSync(cmd);
         for (let j = 0; j < networks.length; j++) {
             if (i != j) {
@@ -39,7 +42,7 @@ function initialize(networks) {
         }
     }
     console.log('starportsInfo', starportsInfo);
-    let cmd = 'cd ' + config.get('starportToolPath') + ' && node index.js -ss CHAIN' + networks[0].id + ',' + starportsInfo;
+    cmd = 'cd ' + config.get('starportToolPath') + ' && node index.js -ss CHAIN' + networks[0].id + ',' + starportsInfo;
     execSync(cmd);
 }
 
