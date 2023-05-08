@@ -1,8 +1,8 @@
 {
     "crossChainContractPath": "./contracts/dante-cross-chain/avalanche/",
     "starportContractPath": "./contracts/star-trek/contracts/",
-    "starportToolPath": "../star-trek-tools/command-line-interact/",
-    "routerPath": "../router/",
+    "starportToolPath": "./star-trek-tools/command-line-interact/",
+    "routerPath": "./router/",
     "networks": [
         {
             "chainType": "EVM",
