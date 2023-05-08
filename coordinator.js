@@ -125,8 +125,13 @@ function updateRouterConfig(networks) {
     fs.writeFileSync(config.get('routerPath') + 'config/default.json', JSON.stringify(cfg, null, '\t'));
 }
 
-function updateRouterSecret() {
+function updateRouterSecret(networks) {
     console.log('updateRouterSecret');
+    let secretCfg = {};
+    for (let i = 0; i < networks.length; i++) {
+        secretCfg['CHAIN' + networks[i].id] = 'b97de1848f97378ee439b37e776ffe11a2fff415b2f93dc240b2d16e9c184ba9';
+    }
+    fs.writeFileSync(config.get('routerPath') + 'config/.secret', JSON.stringify(secretCfg, null, '\t'));
 }
 
 module.exports = {
