@@ -125,6 +125,11 @@ function updateRouterConfig(networks) {
     fs.writeFileSync(config.get('routerPath') + 'config/default.json', JSON.stringify(cfg, null, '\t'));
 }
 
+function updateRouterRes() {
+    console.log('updateRouterRes');
+    execSync('cp ' + config.get('crossChainContractPath') + 'build/contracts/CrossChain.json ' + config.get('routerPath') + 'res/');
+}
+
 function updateRouterSecret(networks) {
     console.log('updateRouterSecret');
     let secretCfg = {};
@@ -184,6 +189,8 @@ module.exports = {
 
     onLaunchRouter: function(networks) {
         updateRouterConfig(networks);
+
+        updateRouterRes();
 
         updateRouterSecret(networks);
 
