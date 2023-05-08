@@ -1,4 +1,3 @@
-const nodesMgr = require('../nodes/index');
 const EVMChain = require('./EVMChain');
 
 class ContractsMgr {

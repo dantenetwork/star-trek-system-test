@@ -11,14 +11,7 @@ class EVMChainDeployer {
         execSync("cd " + config.get('crossChainContractPath') + " && echo -n " + chainInfo.sk + " > .secret");
 
         let cmd = "cd " + config.get('crossChainContractPath') + " && npm install && npx truffle migrate --network CHAIN" + chainInfo.id;
-        execSync(cmd, (error, stdout, stderr) => {
-            if (error) {
-              console.error(`exec error: ${error}`);
-              return;
-            }
-            console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-          });
+        execSync(cmd);
     }
 
     async deployMainStarport(chainInfo) {
@@ -26,14 +19,7 @@ class EVMChainDeployer {
         execSync("cd " + config.get('starportContractPath') + " && echo -n " + chainInfo.sk + " > .secret");
 
         let cmd = "cd " + config.get('starportContractPath') + " && npm install && npx truffle migrate --f 2 --to 2 --network CHAIN" + chainInfo.id;
-        execSync(cmd, (error, stdout, stderr) => {
-            if (error) {
-              console.error(`exec error: ${error}`);
-              return;
-            }
-            console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-          });
+        execSync(cmd);
     }
 
     async deployStarport(chainInfo) {
@@ -42,14 +28,7 @@ class EVMChainDeployer {
         execSync("cd " + config.get('starportContractPath') + " && echo -n " + chainInfo.sk + " > .secret");
 
         let cmd = "cd " + config.get('starportContractPath') + " && npm install && npx truffle migrate --f 3 --to 3 --network CHAIN" + chainInfo.id;
-        execSync(cmd, (error, stdout, stderr) => {
-            if (error) {
-              console.error(`exec error: ${error}`);
-              return;
-            }
-            console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-          });   
+        execSync(cmd);   
     }
 }
 

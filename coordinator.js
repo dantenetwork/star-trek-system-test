@@ -17,7 +17,7 @@ function updateCrossChainConfig(networks) {
         }
         cfg['CHAIN' + networks[i].id] = item;
     }
-    fs.writeFileSync(config.get('starportContractPath') + 'config/default.json', JSON.stringify(cfg));
+    fs.writeFileSync(config.get('crossChainContractPath') + 'config/default.json', JSON.stringify(cfg, null, '\t'));
 }
 
 function updateStarportConfig(networks) {
@@ -39,7 +39,7 @@ function updateStarportConfig(networks) {
         item.interface = networks[i].chainType;
         cfg['CHAIN' + networks[i].id] = item;
     }
-    fs.writeFileSync(config.get('starportContractPath') + 'config/default.json', JSON.stringify(cfg));
+    fs.writeFileSync(config.get('starportContractPath') + 'config/default.json', JSON.stringify(cfg, null, '\t'));
 }
 
 function updateTruffleConfig(networks) {
