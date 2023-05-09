@@ -127,7 +127,7 @@ function updateRouterConfig(networks) {
 
 function updateRouterRes() {
     console.log('updateRouterRes');
-    execSync('cp ' + config.get('crossChainContractPath') + 'build/contracts/CrossChain.json ' + config.get('routerPath') + 'res/');
+    execSync('mkdir -p ' + config.get('routerPath') + 'res && cp ' + config.get('crossChainContractPath') + 'build/contracts/CrossChain.json ' + config.get('routerPath') + 'res/');
 }
 
 function updateRouterSecret(networks) {
